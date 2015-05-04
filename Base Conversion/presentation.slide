@@ -1,0 +1,50 @@
+GO: Algoritmia
+Una presentación acerca de algoritmos
+
+Germán Alberto Giménez Silva
+EOSWEB.info
+ggerman@eosweb.info
+http://www.eosweb.info/
+
+* Introducción
+
+Go es un lenguaje muy poderoso que permite realizar muchas cosas inovadoras. Esta presentación no trata acerca de esas ventajas de Go si no de como escribir antiguos algoritmos en este lenguaje.
+
+Osea utilizar un lenguaje nuevo para hacer cosas viejas.
+
+- Por que de esta presentación:
+
+Por que hace muchos años que quiero tener un lugar donde buscar esos viejos algoritmos y encontrarlos organizados a mi manera, básicamente una motivavión nada mas que personal.
+
+* Reverse string func
+
+
+Declaration of libraries in the header
+
+.code compiling/01/conversion_base.go /PART0/,/PART1/
+
+Reverse `String` function
+
+.code compiling/01/conversion_base.go /PART1/,/PART2/
+
+Remainder integers results
+
+.code compiling/01/conversion_base.go /PART2/,/PART3/
+
+* Base conversion func
+
+.code compiling/01/conversion_base.go /PART3/,/PART4/
+
+* Execute program
+
+.play compiling/01/conversion_base.go /PART4/,/PART5/
+
+* Using Slices
+
+.code compiling/02/conversion.go /PART3/,/PART4/
+
+.play compiling/02/conversion.go /PART4/,/PART5/
+
+* Testing Conversor
+
+.code compiling/02/conversion_test.go /PART1/,/PART2/
