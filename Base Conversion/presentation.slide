@@ -48,3 +48,5 @@ Remainder integers results
 * Testing Conversor
 
 .code compiling/02/conversion_test.go /PART1/,/PART2/
+
+* Operators
