@@ -50,3 +50,13 @@ Remainder integers results
 .code compiling/02/conversion_test.go /PART1/,/PART2/
 
 * Operators
+
+000 -> 0 001 -> 1 010 -> 2
+011 -> 3 100 -> 4 101 -> 5
+110 -> 6 111 -> 7
+
+.play compiling/03/operators.go
+
+* math
+
+.play compiling/03/math.go
