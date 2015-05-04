@@ -21,26 +21,30 @@ Por que hace muchos años que quiero tener un lugar donde buscar esos viejos alg
 
 Declaration of libraries in the header
 
-.code compiling/conversion_base.go /PART0/,/PART1/
+.code compiling/01/conversion_base.go /PART0/,/PART1/
 
 Reverse `String` function
 
-.code compiling/conversion_base.go /PART1/,/PART2/
+.code compiling/01/conversion_base.go /PART1/,/PART2/
 
 Remainder integers results
 
-.code compiling/conversion_base.go /PART2/,/PART3/
+.code compiling/01/conversion_base.go /PART2/,/PART3/
 
 * Base conversion func
 
-.code compiling/conversion_base.go /PART3/,/PART4/
+.code compiling/01/conversion_base.go /PART3/,/PART4/
 
 * Execute program
 
-.play compiling/conversion_base.go /PART4/,/PART5/
+.play compiling/01/conversion_base.go /PART4/,/PART5/
 
 * Using Slices
 
-.code compiling/conversion_base_02.go /PART3/,/PART4/
+.code compiling/02/conversion.go /PART3/,/PART4/
 
-.play compiling/conversion_base_02.go /PART4/,/PART5/
+.play compiling/02/conversion.go /PART4/,/PART5/
+
+* Testing Conversor
+
+.code compiling/02/conversion_test.go /PART1/,/PART2/
