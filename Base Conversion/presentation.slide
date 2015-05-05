@@ -43,11 +43,21 @@ Remainder integers results
 
 .code compiling/02/conversion.go /PART3/,/PART4/
 
+* Run with Slices
+
+.code compiling/02/conversion.go /PART2/,/PART3/
+
 .play compiling/02/conversion.go /PART4/,/PART5/
 
 * Testing Conversor
 
 .code compiling/02/conversion_test.go /PART1/,/PART2/
+
+* Convert no recursive process
+
+.code compiling/03/conversion.go /PART3/,/PART4/
+
+.play compiling/03/conversion.go /PART4/,/PART5/
 
 * Operators
 
@@ -55,8 +65,8 @@ Remainder integers results
 011 -> 3 100 -> 4 101 -> 5
 110 -> 6 111 -> 7
 
-.play compiling/03/operators.go
+.play compiling/04/operators.go
 
 * math
 
-.play compiling/03/math.go
+.play compiling/04/math.go
