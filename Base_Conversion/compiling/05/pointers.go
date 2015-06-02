@@ -51,13 +51,13 @@ func dump(pointer *node) {
 
 func main() {
     var info person
-    info.name, info.age, info.address = "Germán Alberto Giménez Silva", 38, "Nazario Medrano 394" 
+    info.name, info.age, info.address = "Germán Alberto xxxxxxx xxxxx", 30, "xxxxxxxxxxxxxxx xxx" 
     last := add(nil, info)
-    info.name, info.age, info.address = "Juan Francisco Giménez Silva", 28, "Don Bosco 239" 
+    info.name, info.age, info.address = "Juan Francisco Giménez Silva", 20, "xxx xxxxx xxx" 
     last = add(last, info)
-    info.name, info.age, info.address = "Ernestina Giménez Franco", 1, "Nazario Medrano 394"
+    info.name, info.age, info.address = "Ernestina yyyyyyy yyyyyy", 1, "rrrrrrr nnnnnnn y9y"
     last = add(last, info)
-    info.name, info.age, info.address = "María Jimena Franco", 34, "Nazario Medrano 394"
+    info.name, info.age, info.address = "María Jimena gggggg", 22, "fffffff vvvvvvv 355"
     last = add(last, info)
 
     dump(last)
