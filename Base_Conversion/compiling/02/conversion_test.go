@@ -7,6 +7,7 @@ import (
 )
 
 func TestBinary(t *testing.T) {
+
   var str string
   divisor, dividendo, convertido := 25, 2, "11001"
   convert(divisor, dividendo, &str)
@@ -17,6 +18,7 @@ func TestBinary(t *testing.T) {
 }
 
 func TestHexa(t *testing.T) {
+
   str := ""
   divisor, dividendo, convertido := 15, 16, "F"
   convert(divisor, dividendo, &str)
@@ -41,7 +43,9 @@ func TestHexa(t *testing.T) {
 // PART3 OMIT
 }
 
-func TestReverse(t *testing.T) {  text := reverse("En un lugar de la Mancha, de cuyo nombre no quiero acordarme, no ha mucho tiempo que vivía un hidalgo de los de lanza en astillero, adarga antigua, rocín flaco y galgo corredor.")
+func TestReverse(t *testing.T) {
+
+  text := reverse("En un lugar de la Mancha, de cuyo nombre no quiero acordarme, no ha mucho tiempo que vivía un hidalgo de los de lanza en astillero, adarga antigua, rocín flaco y galgo corredor.")
   if text != ".roderroc oglag y ocalf nícor ,augitna agrada ,orellitsa ne aznal ed sol ed ogladih nu aíviv euq opmeit ohcum ah on ,emradroca oreiuq on erbmon oyuc ed ,ahcnaM al ed ragul nu nE" {
     t.Error("Error in reverse String %v" + text)
   }
@@ -52,3 +56,4 @@ func TestReverse(t *testing.T) {  text := reverse("En un lugar de la Mancha, de 
   }
 
 }
+

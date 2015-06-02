@@ -43,11 +43,21 @@ Remainder integers results
 
 .code compiling/02/conversion.go /PART3/,/PART4/
 
+* Run with Slices
+
+.code compiling/02/conversion.go /PART2/,/PART3/
+
 .play compiling/02/conversion.go /PART4/,/PART5/
 
 * Testing Conversor
 
 .code compiling/02/conversion_test.go /PART1/,/PART2/
+
+* Convert no recursive process
+
+.code compiling/03/conversion.go /PART3/,/PART4/
+
+.play compiling/03/conversion.go /PART4/,/PART5/
 
 * Operators
 
@@ -55,12 +65,28 @@ Remainder integers results
 011 -> 3 100 -> 4 101 -> 5
 110 -> 6 111 -> 7
 
-.play compiling/03/operators.go
+.play compiling/04/operators.go
 
 * math
 
+<<<<<<< HEAD:Base Conversion/presentation.slide
 .play compiling/03/math.go
 
 * Pointers
 
 .play compiling/04/pointers.go
+=======
+.play compiling/04/math.go
+
+* Structs and Pointers
+
+.code compiling/05/pointers.go /STRUCTS0/,/ADDNODE1/ 
+
+.code compiling/05/pointers.go /ADDNODE1/,/DUMP/
+
+* Run Structs and Pointers Application (List)
+
+.code compiling/05/pointers.go /DUMP/,/APPLICATION/
+
+.play compiling/05/pointers.go /APPLICATION/,/FINISH/
+>>>>>>> 5e1c9a864d9131194a0a63f4194bce97f28347f2:Base_Conversion/presentation.slide
