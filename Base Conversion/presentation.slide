@@ -60,3 +60,7 @@ Remainder integers results
 * math
 
 .play compiling/03/math.go
+
+* Pointers
+
+.play compiling/04/pointers.go
