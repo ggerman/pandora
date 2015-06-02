@@ -7,5 +7,4 @@
 - operators
 - math Constants
 
-![using slices](https://github.com/ggerman/pandora/blob/master/Base%20Conversion/slide.png)
-
+![using slices](https://raw.githubusercontent.com/ggerman/pandora/master/slide.png)

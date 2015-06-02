@@ -69,13 +69,10 @@ Remainder integers results
 
 * math
 
-<<<<<<< HEAD:Base Conversion/presentation.slide
 .play compiling/03/math.go
 
-* Pointers
+* math
 
-.play compiling/04/pointers.go
-=======
 .play compiling/04/math.go
 
 * Structs and Pointers
