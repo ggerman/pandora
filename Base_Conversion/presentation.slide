@@ -70,3 +70,15 @@ Remainder integers results
 * math
 
 .play compiling/04/math.go
+
+* Structs and Pointers
+
+.code compiling/05/pointers.go /STRUCTS0/,/ADDNODE1/ 
+
+.code compiling/05/pointers.go /ADDNODE1/,/DUMP/
+
+* Run Structs and Pointers Application (List)
+
+.code compiling/05/pointers.go /DUMP/,/APPLICATION/
+
+.play compiling/05/pointers.go /APPLICATION/,/FINISH/
