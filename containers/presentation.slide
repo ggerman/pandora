@@ -1,0 +1,138 @@
+Containers: docker
+Balbuceos sobre una tecnología de moda.
+
+* Links
+
+
+.link https://www.docker.com/ Docker | https://www.docker.com/
+.link https://www.vagrantup.com/ Vagrant | https://www.vagrantup.com/
+.link https://www.chef.io/chef/ chef | https://www.chef.io/chef/
+.link https://puppetlabs.com/ puppets | https://puppetlabs.com/
+.link http://www.javiergarzas.com/2015/08/docker-vs-puppet-vs-vagrant-vs-chef.html docker vs puppet vs vagrant vs chef
+
+* Licencias
+
+En su mayoria tenemos opciones de elegir soluciones libres en esta teconología. Aunque como todo corre en un servidor terminaremos pagando para que nuestros containers corran en un infrestructura que es complicado saber sus licencias.
+
+.image images/inspeccionar.jpg 323 800
+
+* Licencias
+
+.image images/docker.png 48 199 
+Apache License | Version 2.0, January 2004 | https://www.apache.org/licenses/ [FREE]
+
+.image images/vagrant.png 64 248
+The MIT License [FREE]
+
+.image images/virtualbox.png 68 358
+GNU General Public License V2 [FREE]
+
+* Licencias
+
+.image images/puppet.png 53 157
+.link https://puppetlabs.com/sites/default/files/Puppet%20Labs%20-%20FORM%20-%20Software%20License%20Agreement%20%28Puppet%20Enterprise%20-%20Clickwrap%29%203.7.14.pdf  Licencia | Privativa
+
+.image images/chef.png 196 233
+Apache License | Version 2.0, January 2004 | esta medio escondido pero esta así que [FREE]
+
+.link https://github.com/chef/chef chef | source code
+
+* boot2docker
+
+_es_un_linuxito_ que sirve para correr containers Docker dentro de plataformas no Linux y también corre en Linux.
+
+.link http://boot2docker.io/ http://boot2docker.io/
+
+Es un desarrollo libre que nos permite correr la infraestructura de containers dentro de plataformas Windows / MacOs / Linux.
+
+  No entiendo bien para que correr esto en Linux ya que docker corre sin necesidad de una VM.
+  Es muy probable que sea para mantener al máximo el aislamiento [ISOLATION] en los containers.
+
+.image images/isolation.png 103 704
+
+* Acerca de la charla
+
+- Principalmente Docker
+
+- ¿Porque vagrant?
+
+- ¿Porque Chef?
+
+- ¿Porque Puppet?
+
+* Docker
+
+  attach    Attach to a running container
+  build     Build an image from a Dockerfile
+  commit    Create a new image from a container's changes
+  cp        Copy files/folders from a container's filesystem to the host path
+  create    Create a new container
+  diff      Inspect changes on a container's filesystem
+  events    Get real time events from the server
+  exec      Run a command in a running container
+  export    Stream the contents of a container as a tar archive
+  history   Show the history of an image
+  images    List images
+  import    Create a new filesystem image from the contents of a tarball
+  info      Display system-wide information
+  inspect   Return low-level information on a container or image
+  kill      Kill a running container
+  load      Load an image from a tar archive
+  login     Register or log in to a Docker registry server
+  logout    Log out from a Docker registry server
+  logs      Fetch the logs of a container
+  port      Lookup the public-facing port that is NAT-ed to PRIVATE_PORT
+  pause     Pause all processes within a container
+  ps        List containers
+
+* Docker  
+
+  pull      Pull an image or a repository from a Docker registry server
+  push      Push an image or a repository to a Docker registry server
+  rename    Rename an existing container
+  restart   Restart a running container
+  rm        Remove one or more containers
+  rmi       Remove one or more images
+  run       Run a command in a new container
+  save      Save an image to a tar archive
+  search    Search for an image on the Docker Hub
+  start     Start a stopped container
+  stats     Display a stream of a containers' resource usage statistics
+  stop      Stop a running container
+  tag       Tag an image into a repository
+  top       Lookup the running processes of a container
+  unpause   Unpause a paused container
+  version   Show the Docker version information
+  wait      Block until a container stops, then print its exit code
+
+* Docker Build
+
+Docker puede construir imagenes siguiendo las instrucciones que le pasamos en un Dockerfile.
+
+  FROM debian:stable
+  MAINTAINER Giménez Silva Germán Alberto <ggerman@gmail.com>
+  RUN echo 'deb http://ftp.us.debian.org/debian/ stable main non-free contrib' >> /etc/apt/sources.list
+  RUN apt-get update
+  RUN apt-get install -y dosbox --no-install-recommends
+  RUN apt-get install -y openjdk-7-jre --no-install-recommends
+  RUN apt-get clean
+  RUN mkdir ~/Pacman
+  # el contenido que queremos copiar a la carpeta debe estar en el path actual
+  COPY ./Pacman/* ~/Pacman/ 
+  ENTRYPOINT ["dosbox"]
+
+Linea de comando:
+
+  # docker build -t myname/tag .
+
+* Docker images
+
+Utilizando images obtenemos un listado de todas nuestros contenedores (no necesariamente corriendo en nuestro sistema). Si alguno de estos containers nos molesta o queremos desacernos de él lo podemos remover con rmi o rmi -f y a continuación su ID.
+
+.image images/docker-images.png 166 937
+
+Estas imagenes estan listas para correr.
+
+* Docker Run
+
+  docker run --name ruby-postgres -e POSTGRES_PASSWORD=asdasd123 -d postgres
