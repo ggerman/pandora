@@ -10,6 +10,12 @@
 ```
 Browser: http://172.17.42.1:3999/presentation.slide  
 
+Detached (-d) [RUNNING in background]
+
+```
+  # docker run -p 3999:3999 -d  rubylit/presentation:01
+```
+
 ## Interesting
 
 ## Ignore entrypont in docker
