@@ -6,8 +6,9 @@
   # git clone https://github.com/ggerman/pandora.git .
   # cd containers
   # sudo docker build  -t name/presentation .
-  # docker run -ti --entrypoint=/bin/bash rubylit/presentation
+  # docker run -p 3999:3999 name/presentation
 ```
+Browser: http://172.17.42.1:3999/presentation.slide  
 
 ## Interesting
 
@@ -19,12 +20,6 @@
 
   ```# docker rm $(docker ps -a -q)```
  
-## Execute presentation:
-
-  ```# docker run -p 3999:3999 ggerman/presentation```
-
-Browser: http://172.17.42.1:3999/presentation.slide  
-
 # Docker
 
 ![first slide](https://raw.githubusercontent.com/ggerman/pandora/master/containers/images/Screenshot%20-%2008282015%20-%2011%3A49%3A55%20AM.png)
