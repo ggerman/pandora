@@ -1,28 +1,31 @@
 # containers
-Run presentation: (Linux)
-´´´
+## Run presentation: (Linux)
+
+
+```
   # git clone https://github.com/ggerman/pandora.git .
   # cd containers
   # sudo docker build  -t name/presentation .
   # docker run -ti --entrypoint=/bin/bash rubylit/presentation
-´´´
-Interesting
+```
 
-Ignore entrypont in docker
+## Interesting
 
-  ´´´docker run -ti --entrypoint=/bin/bash rubylit/presentation -s´´´
+## Ignore entrypont in docker
 
-Remove all images running
+  ```docker run -ti --entrypoint=/bin/bash rubylit/presentation -s```
 
-  ´´´# docker rm $(docker ps -a -q)´´´
+## Remove all images running
+
+  ```# docker rm $(docker ps -a -q)```
  
-Execute presentation:
+## Execute presentation:
 
-  ´´´# docker run -p 3999:3999 ggerman/presentation´´´
+  ```# docker run -p 3999:3999 ggerman/presentation```
 
 Browser: http://172.17.42.1:3999/presentation.slide  
 
-Docker
+# Docker
 
 ![first slide](https://raw.githubusercontent.com/ggerman/pandora/master/containers/images/Screenshot%20-%2008282015%20-%2011%3A49%3A55%20AM.png)
 
