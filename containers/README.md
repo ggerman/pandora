@@ -1,4 +1,27 @@
 # containers
+
+## 02 Sep 2015 update Dockerfile for new docker version:
+
+```
+  Client:
+   Version:      1.9.0-dev
+   API version:  1.21
+   Go version:   go1.4.2
+   Git commit:   3111aa7
+   Built:        Tue Sep  1 20:35:25 UTC 2015
+   OS/Arch:      linux/amd64
+
+  Server:
+   Version:      1.9.0-dev
+   API version:  1.21
+   Go version:   go1.4.2
+   Git commit:   3111aa7
+   Built:        Tue Sep  1 20:35:25 UTC 2015
+   OS/Arch:      linux/amd64
+```
+Patch for skipping a failing test than rendered our docker image usel
+https://gist.githubusercontent.com/xiam/f50f6dd6085f9a07ccfd/raw/5e0f472221f9c1556fe34788ff01724b63980337/docker_golang
+
 ## Run presentation: (Linux)
 
 
