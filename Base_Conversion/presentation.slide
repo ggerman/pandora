@@ -69,10 +69,6 @@ Remainder integers results
 
 * math
 
-.play compiling/03/math.go
-
-* math
-
 .play compiling/04/math.go
 
 * Structs and Pointers
@@ -86,4 +82,3 @@ Remainder integers results
 .code compiling/05/pointers.go /DUMP/,/APPLICATION/
 
 .play compiling/05/pointers.go /APPLICATION/,/FINISH/
->>>>>>> 5e1c9a864d9131194a0a63f4194bce97f28347f2:Base_Conversion/presentation.slide

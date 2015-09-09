@@ -68,6 +68,18 @@ Detached (-d) [RUNNING in background]
 
 * Boot2docker (multiplataformas)
 
+* Docker
+  - ¿Que es docker?
+  - Isolation
+  - Usando
+
+* Creando un container  
+  - Instalar
+  - search
+  - run / build
+    - ps -a -q / rm / images / rmi
+  - hagamos correr clojure (lein)
+
 * Mi primer container (Packman)
  - Dockerfile
  - build

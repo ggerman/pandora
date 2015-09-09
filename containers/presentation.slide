@@ -3,7 +3,6 @@ Balbuceos sobre una tecnología de moda.
 
 * Links
 
-
 .link https://www.docker.com/ Docker | https://www.docker.com/
 .link https://www.vagrantup.com/ Vagrant | https://www.vagrantup.com/
 .link https://www.chef.io/chef/ chef | https://www.chef.io/chef/
@@ -45,9 +44,6 @@ _es_un_linuxito_ que sirve para correr containers Docker dentro de plataformas n
 
 Es un desarrollo libre que nos permite correr la infraestructura de containers dentro de plataformas Windows / MacOs / Linux.
 
-  No entiendo bien para que correr esto en Linux ya que docker corre sin necesidad de una VM.
-  Es muy probable que sea para mantener al máximo el aislamiento [ISOLATION] en los containers.
-
 .image images/isolation.png 103 704
 
 * Acerca de la charla
@@ -59,6 +55,97 @@ Es un desarrollo libre que nos permite correr la infraestructura de containers d
 - ¿Porque Chef?
 
 - ¿Porque Puppet?
+
+* Docker ¿Que es docker?
+
+Docker nos permite empaquetar una aplicación con todas sus dependencias en un contenedor.
+
+.image images/what_is_layered_filesystems_sm.png 190 200
+
+Los contenedores Docker son un sistema de archivos completo donde podemos colocar nuestras aplicaciones con todas sus librerias. Aqui podemos instalar todo lo que necesitamos en un servidor y esto nos garantiza que estaremos ejecutando el mismo código con las mismas librerias independientemente del entorno.
+
+* Docker - Isolation
+
+"La buena práctica" - existe la idea de que cada containar por cuestiones de seguridad y menor promiscuidad debe estar corriendo solo una cosa y no mas que eso. A esto se le llama aislamiento y es algo que es muy valorado dentro de las comunidades de creadores de containers.
+
+.image images/aislamiento-social.jpg
+
+NOTA: es algo que esta bueno saberlo, pero a la hora de SHIP (enviar la aplicacion a un amigo que no es experto) no es tan útil ya que es mas sencillo hacer solo un container con todo adentro y listo.
+
+* Docker - Usando
+
+  Como discutimos en general a las tecnologias las debemos utilizar para servirnos de ellas.
+
+En todas las charlas de Docker que e visto hay una fuerte tendencia a crear una infrestructura, con fines de empresa (seguridad, escalabilidad, etc ...)
+
+Pero como programador también veo muchos beneficios que a veces no son tan parecidos a un deber ser de infraestructura empresarial. Y esto es que en tiempo de desarrollo meter toda una aplicación con sus dependencias en un solo container (app, database, etc...), es algo que puede ser útil y hacernos ganar tiempo.
+
+  En este caso dejariamos las buenas practicas para el deploy 
+  y nuestro equipo solo deberia conocer el comando.
+  # docker import app.tar.gz
+
+.image images/157594438.jpg
+
+* Creando un container - Instalación
+
+  1º step: instalar docker
+
+.link http://docs.docker.com/mac/started/ install | http://docs.docker.com/mac/started/
+
+.image images/non-root.png
+
+* Creando un container - search
+  
+  2º step: buscar una imagen:
+  # docker search clojure
+
+.image images/clojure.png
+  
+* Creando un container - run / build
+
+  3º step: en este caso run y build funcionan de la misma manera
+
+Cuando corremos (run) o creamos una imagen (build) docker primero busca si no se encuentra en nuestro host local y si no esta allí, la descarga de docker hub. 
+
+  Descarga los layers que le faltan para completar nuestra imagen.
+
+.image images/clojure-pull.png  
+
+* Creando un container - run / build -> ps -a
+
+  Conocer los containers que estan corriendo en nuestro host.
+  # docker ps -a
+
+.image images/clojure-ps-a.png
+
+  Matar todos los containers corriendo en nuestro host
+  # docker rm $(docker ps -a -q)
+
+  Listar todas las imagenes alojadas en nuestro host
+  # docker images 
+  Borrar una imagen:
+  # docker rmi -f 865a6d4ec0ed 
+
+.image images/docker-img.png 
+
+* Creando un container - hagamos correr clojure (lein)
+
+.link https://hub.docker.com/_/clojure/ clojure | https://hub.docker.com/_/clojure/
+
+_Dockerfile_
+
+  FROM clojure
+  COPY . /usr/src/app
+  WORKDIR /usr/src/app
+  CMD ["lein", "run"]
+
+  # docker build -t rubylit/clojure .
+
+.image images/clojure-dockerfile-build.png
+
+* Creando un container - RUN
+
+  # docker run -it --rm --name gg rubylit/clojure
 
 * Docker
 
