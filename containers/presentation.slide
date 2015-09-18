@@ -88,7 +88,7 @@ Pero como programador también veo muchos beneficios que a veces no son tan pare
 
 * Creando un container - Instalación
 
-  1º step: instalar docker
+  Instalar docker
 
 .link http://docs.docker.com/mac/started/ install | http://docs.docker.com/mac/started/
 
@@ -96,27 +96,27 @@ Pero como programador también veo muchos beneficios que a veces no son tan pare
 
 * Creando un container - search
   
-  2º step: buscar una imagen:
-  # docker search clojure
+  Buscar una imagen:
+  # docker search volt
 
-.image images/clojure.png
+.image images/mongodb.png
   
 * Creando un container - run / build
 
-  3º step: en este caso run y build funcionan de la misma manera
+  En este caso run y build funcionan de la misma manera
 
 Cuando corremos (run) o creamos una imagen (build) docker primero busca si no se encuentra en nuestro host local y si no esta allí, la descarga de docker hub. 
 
   Descarga los layers que le faltan para completar nuestra imagen.
 
-.image images/clojure-pull.png  
+.image images/busybox-pull.png  
 
 * Creando un container - run / build -> ps -a
 
   Conocer los containers que estan corriendo en nuestro host.
   # docker ps -a
 
-.image images/clojure-ps-a.png
+.image images/volt-ps-a.png
 
   Matar todos los containers corriendo en nuestro host
   # docker rm $(docker ps -a -q)
@@ -128,53 +128,110 @@ Cuando corremos (run) o creamos una imagen (build) docker primero busca si no se
 
 .image images/docker-img.png 
 
-* Creando un container - hagamos correr clojure (lein)
-
-.link https://hub.docker.com/_/clojure/ clojure | https://hub.docker.com/_/clojure/
+* Creando un container - hagamos correr volt con mongodb (1)
 
 _Dockerfile_
 
-  FROM clojure
-  COPY . /usr/src/app
-  WORKDIR /usr/src/app
-  CMD ["lein", "run"]
+.code volt/Dockerfile
 
-  # docker build -t rubylit/clojure .
+.link http://voltframework.com/ VOLT | http://voltframework.com/
 
-.image images/clojure-dockerfile-build.png
+* Creando un container - hagamos correr volt con mongodb (2)
 
-* Creando un container - RUN
+  # docker build -t voltframework .
 
-  # docker run -it --rm --name gg rubylit/clojure
+.image images/volt-dockerfile-build.png
 
-* Docker
+* Creando un container - RUN (1)
 
-Comandos importantes para docker:
+  # docker run -p 3000:3000 --name volt voltframework
 
-  run       Run a command in a new container
+.image images/volt-running-container.png
 
-Pone en marcha un nuevo container a partir de una imagen que puede o no ser local.
-ej: 
+Aqui estamos corriendo una instancia de nuestra aplicación (container).
+El parametro -d hace correr la instancia RUN como demonio.
+  
+  # docker run -d -p 3000:3000 --name volt voltframework
 
-  docker run -d -p 5432:5432 --name db postgres
+.image images/volt-running-daemon.png
 
-Los argumentos como -p para exponer los puertos y --link para generar un nombre de enlace son de gran ayuda a la hora de comunicar partes aisladas de una aplicación.
+* Creando un container - RUN (2)
 
-* Docker Build
+.image images/volt-welcome-page.png
 
-Docker puede construir imagenes siguiendo las instrucciones que le pasamos en un Dockerfile.
+* Volt: conectando a la base de datos.
 
-  FROM debian:stable
-  MAINTAINER Giménez Silva Germán Alberto <ggerman@gmail.com>
-  RUN echo 'deb http://ftp.us.debian.org/debian/ stable main non-free contrib' >> /etc/apt/sources.list
-  RUN apt-get update
-  RUN apt-get install -y dosbox --no-install-recommends
-  RUN apt-get install -y openjdk-7-jre --no-install-recommends
-  RUN apt-get clean
-  RUN mkdir ~/Pacman
-  # el contenido que queremos copiar a la carpeta debe estar en el path actual
-  COPY ./Pacman/* ~/Pacman/ 
-  ENTRYPOINT ["dosbox"]
+Volt tiene un archivo de configuración config/app.rb. Que a los fines de esta presentación voy a borrar y copiar uno con mi configuración para que funcione con una conección a otro container donde tendremos mongoDB.
+
+/app.rb. Que a los fines de esta presentación voy a borrar y copiar uno con mi configuración para que funcione con una conección a otro container donde tendremos mongoDB.
+
+.code volt/manualy.rb
+
+* MongoDB: puesta en marcha de la base de datos.
+
+  # docker run -d --name db --port 27017:27017 mongo
+
+.image images/volt-mongodb-manualy.png
+
+* MongoDB: puesta en marcha de la base de datos. (2)
+
+  # docker ps -a
+  CONTAINER ID        IMAGE               COMMAND                CREATED             STATUS              PORTS                      NAMES
+  91531052333f        mongo               "/entrypoint.sh mong   16 minutes ago      Up 16 minutes       0.0.0.0:27017->27017/tcp   db                  
+  4602ce309ddc        voltframework       "bundle exec volt se   35 minutes ago      Up 35 minutes       0.0.0.0:3000->3000/tcp     volt
+  # docker logs 4602ce309ddc
+
+.image images/volt-docker-logs.png
+
+  (divagando) >> Ejecutar un comando en un container corriendo.
+  # docker exec -it 4602ce309ddc vim config/app.rb
+
+.image images/volt-editing-configuration.png
+
+* ¡ Listo ! Ya tenemos todo corriendo en containers
+
+.image images/happy-docker.png
+
+* DOCKER: Esta cosa tiene commits y layers
+
+Cuando modificamos un container este es tan efimero como lo es nuestro entorno, para que los cambios persistan debemos hacer commits.
+
+  ...
+
+LAYERS: ¿a que nos referimos con esto?
+
+Un container no es mas que un conjunto de layers agrupados.
+
+ - Reciclaje de paquetes instalados
+ - Reciclaje de tiempo de configuración
+
+* docker-compose: haciendo las cosas más automáticas
+
+Compose es una aplicación que nos permite automatizar toda la tarea de conexión entre nuestros containers.
+Los links son generados por dentro del MAIN HOST de Docker si necesidad de publicar los puertos.
+
+De esta manera lo unico que debemos mostrar es el puerto por el que queremos acceder a nuestra aplicación, dejando que docker orqueste las conecciones entre nuestros containers.
+
+_docker-compose.yml_
+
+.code volt/docker-compose.yml
+
+* docker-compose: database link
+
+Para crear la conexión entre los containers podemos, como hicimos manualmente publicar el puerto de la base de datos.
+
+  ports:
+    - "27017:27017"
+
+O lo que corresponde, que es dejar que docker haga el link entre VOLT y Mongo, para esto debemos modificar la configuración de VOLT linkeando con el nuevo nombre.
+
+.code volt/compose.rb
+
+* docker-compose: UP
+
+  # docker-compose up
+
+* 2
 
 Linea de comando:
 
