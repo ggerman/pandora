@@ -24,7 +24,7 @@ manuel.garcia@altoros.com
 
 .link https://docs.docker.com/machine/ Docker Machine | https://docs.docker.com/machine/
 
-  Puede ser de interes pero NO entra en la presentación:
+  Puede ser de interés pero NO entra en la presentación:
 
 .link https://docs.docker.com/swarm/install-w-machine/ Swarm 
 .link https://giantswarm.io/ Giant Swarm | https://giantswarm.io/
@@ -34,7 +34,7 @@ manuel.garcia@altoros.com
 
 * Licencias
 
-En su mayoria tenemos opciones de elegir soluciones libres en esta teconología. Aunque como todo corre en un servidor terminaremos pagando para que nuestros containers corran en un infrestructura que es complicado saber sus licencias. En general serán gnu-linux por economía.
+La mayoría de las opciones para elegir en esta tecnología tienen licencias libres. Aunque, como todo corre en un servidor, terminaremos pagando para que nuestros containers corran en un infrestructura que es complicado conocer sus licencias. En general, serán gnu-linux por economía.
 
 .image images/inspeccionar.jpg 323 800
 
@@ -68,32 +68,32 @@ Es un desarrollo libre que nos permite correr la infraestructura de containers d
 
 - 2. Comparativa con vagrant
 
-* Docker ¿Que es docker?
+* Docker ¿Qué es docker?
 
 Docker nos permite empaquetar una aplicación con todas sus dependencias en un contenedor.
 
 .image images/what_is_layered_filesystems_sm.png 190 200
 
-Los contenedores Docker son un sistema de archivos completo donde podemos colocar nuestras aplicaciones con todas sus librerias. Aqui podemos instalar todo lo que necesitamos en un servidor y esto nos garantiza que estaremos ejecutando el mismo código con las mismas librerias independientemente del entorno.
+Los contenedores Docker son un sistema de archivos completo donde podemos colocar nuestras aplicaciones con todas sus librerías. Aqui podemos instalar todo lo que necesitamos en un servidor y esto nos garantiza que estaremos ejecutando el mismo código con las mismas librerías, independientemente del entorno.
 
 * Docker - Isolation
 
 .link https://docs.docker.com/articles/dockerfile_best-practices/ Dockerfile best practices
 
-"La buena práctica" - existe la idea de que cada containar por cuestiones de seguridad y menor promiscuidad debe estar corriendo solo una cosa y no mas que eso. A esto se le llama aislamiento y es algo que es muy valorado dentro de las comunidades de creadores de containers.
+"La buena práctica" - existe la idea de que en cada container, por cuestiones de seguridad y menor promiscuidad, debe estar corriendo sólo una proceso y no más que eso. A esto se le llama aislamiento y es algo que es muy valorado dentro de las comunidades de creadores de containers.
 
 .image images/aislamiento-social.jpg
 
-NOTA: es algo que esta bueno saberlo, pero a la hora de SHIP (enviar la aplicacion a un amigo que no es experto) no es tan útil ya que es mas sencillo hacer solo un container con todo adentro y listo.
+NOTA: es algo que esta bueno saberlo, pero a la hora de SHIP (enviar la aplicacion a un amigo que no es experto) no es tan útil, ya que es mas sencillo hacer sólo un container con todo adentro y listo.
 
 * Docker - Usando
 
-En las charlas de Docker que e visto hay una fuerte tendencia a crear una infrestructura, con fines de empresa (seguridad, escalabilidad, etc ...)
+En las charlas de Docker que he visto, hay una fuerte tendencia a crear una infrastructura, con fines de empresa (seguridad, escalabilidad, etc ...)
 
-Pero como programador también veo muchos beneficios que a veces no son tan parecidos a un deber ser de infraestructura empresarial. Y esto es que en tiempo de desarrollo meter toda una aplicación con sus dependencias en un solo container (app, database, etc...), es algo que puede ser útil y hacernos ganar tiempo.
+Pero como programador también veo muchos beneficios que a veces no son tan parecidos a un deber ser de infraestructura empresarial. Y esto es, que en tiempo de desarrollo, meter toda una aplicación con sus dependencias en un solo container (app, database, etc...), es algo que puede ser útil y hacernos ganar tiempo.
 
-  En este caso dejariamos las buenas practicas para el deploy 
-  y nuestro equipo solo deberia conocer el comando.
+  En este caso dejaríamos las buenas prácticas para el deploy 
+  y nuestro equipo sólo deberia conocer el comando.
   # docker import app.tar.gz
 
 .image images/157594438.jpg
@@ -118,7 +118,7 @@ Pero como programador también veo muchos beneficios que a veces no son tan pare
 
   En este caso run y build funcionan de la misma manera
 
-Cuando corremos (run) o creamos una imagen (build) docker primero busca si no se encuentra en nuestro host local y si no esta allí, la descarga de docker hub. 
+Cuando corremos (run) o creamos una imagen (build) docker primero busca si no se encuentra en nuestro host local y si no está allí, la descarga de docker hub. 
 
   Descarga los layers que le faltan para completar nuestra imagen.
 
@@ -162,7 +162,7 @@ _Dockerfile_
 .image images/volt-running-container.png
 
 Aqui estamos corriendo una instancia de nuestra aplicación (container).
-El parametro -d hace correr la instancia RUN como demonio.
+El parámetro -d hace correr la instancia RUN como demonio.
   
   # docker run -d -p 3000:3000 --name volt voltframework
 
@@ -205,17 +205,17 @@ Volt contiene un archivo de configuración config/app.rb. Que a los fines de est
 
 * DOCKER: Esta cosa tiene commits y layers
 
-Cuando modificamos un container este es tan efimero como lo es nuestro entorno, para que los cambios persistan debemos hacer commits.
+Cuando modificamos un container este es tan efímero como lo es nuestro entorno, para que los cambios persistan debemos hacer commits.
 
   # docker commit 4602ce309ddc voltframework:version2
 
-LAYERS: ¿a que nos referimos con esto?
+LAYERS: ¿a qué nos referimos con esto?
 
-Un container no es mas que un conjunto de layers agrupados.
+Un container no es más que un conjunto de layers agrupados.
 
 
-  Los layers son etapas que se generan cuando creamos un conainer
-  lo podemos visualzar con el comando build:
+  Los layers son etapas que se generan cuando creamos un container
+  lo podemos visualizar con el comando build:
 
   Step 1 : FROM busybox
   Pulling repository busybox
@@ -230,7 +230,7 @@ Docker tiene la capacidad de reutilizar esos layers todo el tiempo.
 
 Compose es una aplicación que nos permite automatizar toda la tarea de conexión entre containers.
 Los links son generados por dentro del MAIN HOST de Docker si necesidad de publicar los puertos.
-De esta manera lo unico que debemos mostrar es el puerto por el que queremos acceder a nuestra aplicación, dejando que docker orqueste las conexiones entre nuestros containers.
+De esta manera, lo único que debemos mostrar es el puerto por el que queremos acceder a nuestra aplicación, dejando que docker orqueste las conexiones entre nuestros containers.
 
 _docker-compose.yml_
 
@@ -257,6 +257,6 @@ Y dejamos que docker haga el link entre VOLT y Mongo, para esto debemos modifica
 
 * docker-machine
 
-Miren la hora y preguntense
+Miren la hora y pregúntense
 
 ** ¿Seguimos con docker-machine?
