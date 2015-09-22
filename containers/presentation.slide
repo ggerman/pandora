@@ -1,17 +1,40 @@
 Containers: docker
 Balbuceos sobre una tecnología de moda.
+Tags: Docker, Docker Machine, Volt, MongoDB
 
-* Links
+Giménez Silva Germán Alberto
+Programador para EosWeb
+http://www.eosweb.info
+ggerman@gmail.com
+@gsgerman
 
-.link https://www.docker.com/ Docker | https://www.docker.com/
+Manuel Garcia
+Manu definite acá, Altoros
+http://www.altoros.com
+manuel.garcia@altoros.com
+@mgarcia
+
+
+* Links - Acerca de la presentación:
+
+.link https://www.docker.com/ Docker | https://www.docker.com/ 
 .link https://www.vagrantup.com/ Vagrant | https://www.vagrantup.com/
+
+  No se si entra:
+
+.link https://docs.docker.com/machine/ Docker Machine | https://docs.docker.com/machine/
+
+  Puede ser de interes pero NO entra en la presentación:
+
+.link https://docs.docker.com/swarm/install-w-machine/ Swarm 
+.link https://giantswarm.io/ Giant Swarm | https://giantswarm.io/
 .link https://www.chef.io/chef/ chef | https://www.chef.io/chef/
 .link https://puppetlabs.com/ puppets | https://puppetlabs.com/
 .link http://www.javiergarzas.com/2015/08/docker-vs-puppet-vs-vagrant-vs-chef.html docker vs puppet vs vagrant vs chef
 
 * Licencias
 
-En su mayoria tenemos opciones de elegir soluciones libres en esta teconología. Aunque como todo corre en un servidor terminaremos pagando para que nuestros containers corran en un infrestructura que es complicado saber sus licencias.
+En su mayoria tenemos opciones de elegir soluciones libres en esta teconología. Aunque como todo corre en un servidor terminaremos pagando para que nuestros containers corran en un infrestructura que es complicado saber sus licencias. En general serán gnu-linux por economía.
 
 .image images/inspeccionar.jpg 323 800
 
@@ -26,16 +49,6 @@ The MIT License [FREE]
 .image images/virtualbox.png 68 358
 GNU General Public License V2 [FREE]
 
-* Licencias
-
-.image images/puppet.png 53 157
-.link https://puppetlabs.com/sites/default/files/Puppet%20Labs%20-%20FORM%20-%20Software%20License%20Agreement%20%28Puppet%20Enterprise%20-%20Clickwrap%29%203.7.14.pdf  Licencia | Privativa
-
-.image images/chef.png 196 233
-Apache License | Version 2.0, January 2004 | esta medio escondido pero esta así que [FREE]
-
-.link https://github.com/chef/chef chef | source code
-
 * boot2docker
 
 _es_un_linuxito_ que sirve para correr containers Docker dentro de plataformas no Linux y también corre en Linux.
@@ -48,13 +61,12 @@ Es un desarrollo libre que nos permite correr la infraestructura de containers d
 
 * Acerca de la charla
 
-- Principalmente Docker
+- 1. Principalmente Docker
 
-- ¿Porque vagrant?
+- 1.1 Algunos conceptos
+- 1.2 Creando un proyecto en docker
 
-- ¿Porque Chef?
-
-- ¿Porque Puppet?
+- 2. Comparativa con vagrant
 
 * Docker ¿Que es docker?
 
@@ -66,6 +78,8 @@ Los contenedores Docker son un sistema de archivos completo donde podemos coloca
 
 * Docker - Isolation
 
+.link https://docs.docker.com/articles/dockerfile_best-practices/ Dockerfile best practices
+
 "La buena práctica" - existe la idea de que cada containar por cuestiones de seguridad y menor promiscuidad debe estar corriendo solo una cosa y no mas que eso. A esto se le llama aislamiento y es algo que es muy valorado dentro de las comunidades de creadores de containers.
 
 .image images/aislamiento-social.jpg
@@ -74,9 +88,7 @@ NOTA: es algo que esta bueno saberlo, pero a la hora de SHIP (enviar la aplicaci
 
 * Docker - Usando
 
-  Como discutimos en general a las tecnologias las debemos utilizar para servirnos de ellas.
-
-En todas las charlas de Docker que e visto hay una fuerte tendencia a crear una infrestructura, con fines de empresa (seguridad, escalabilidad, etc ...)
+En las charlas de Docker que e visto hay una fuerte tendencia a crear una infrestructura, con fines de empresa (seguridad, escalabilidad, etc ...)
 
 Pero como programador también veo muchos beneficios que a veces no son tan parecidos a un deber ser de infraestructura empresarial. Y esto es que en tiempo de desarrollo meter toda una aplicación con sus dependencias en un solo container (app, database, etc...), es algo que puede ser útil y hacernos ganar tiempo.
 
@@ -88,16 +100,17 @@ Pero como programador también veo muchos beneficios que a veces no son tan pare
 
 * Creando un container - Instalación
 
-  Instalar docker
+ Instalar docker
 
-.link http://docs.docker.com/mac/started/ install | http://docs.docker.com/mac/started/
+.link https://docs.docker.com/installation/debian/ install | https://docs.docker.com/installation/debian/
 
 .image images/non-root.png
 
 * Creando un container - search
   
   Buscar una imagen:
-  # docker search volt
+  # docker search mongo
+
 
 .image images/mongodb.png
   
@@ -161,9 +174,7 @@ El parametro -d hace correr la instancia RUN como demonio.
 
 * Volt: conectando a la base de datos.
 
-Volt tiene un archivo de configuración config/app.rb. Que a los fines de esta presentación voy a borrar y copiar uno con mi configuración para que funcione con una conección a otro container donde tendremos mongoDB.
-
-/app.rb. Que a los fines de esta presentación voy a borrar y copiar uno con mi configuración para que funcione con una conección a otro container donde tendremos mongoDB.
+Volt contiene un archivo de configuración config/app.rb. Que a los fines de esta presentación voy a eliminar y copiar uno con mi configuración para que funcione con una conexión a otro container donde tendremos mongoDB.
 
 .code volt/manualy.rb
 
@@ -183,7 +194,7 @@ Volt tiene un archivo de configuración config/app.rb. Que a los fines de esta p
 
 .image images/volt-docker-logs.png
 
-  (divagando) >> Ejecutar un comando en un container corriendo.
+  (divagando) >> Ejecutar un comando en un container que ya esta corriendo.
   # docker exec -it 4602ce309ddc vim config/app.rb
 
 .image images/volt-editing-configuration.png
@@ -196,21 +207,30 @@ Volt tiene un archivo de configuración config/app.rb. Que a los fines de esta p
 
 Cuando modificamos un container este es tan efimero como lo es nuestro entorno, para que los cambios persistan debemos hacer commits.
 
-  ...
+  # docker commit 4602ce309ddc voltframework:version2
 
 LAYERS: ¿a que nos referimos con esto?
 
 Un container no es mas que un conjunto de layers agrupados.
+
+
+  Los layers son etapas que se generan cuando creamos un conainer
+  lo podemos visualzar con el comando build:
+
+  Step 1 : FROM busybox
+  Pulling repository busybox
+   ---> e9aa60c60128MB/2.284 MB (100%) endpoint: https://cdn-registry-1.docker.io/v1/
+
+Docker tiene la capacidad de reutilizar esos layers todo el tiempo.
 
  - Reciclaje de paquetes instalados
  - Reciclaje de tiempo de configuración
 
 * docker-compose: haciendo las cosas más automáticas
 
-Compose es una aplicación que nos permite automatizar toda la tarea de conexión entre nuestros containers.
+Compose es una aplicación que nos permite automatizar toda la tarea de conexión entre containers.
 Los links son generados por dentro del MAIN HOST de Docker si necesidad de publicar los puertos.
-
-De esta manera lo unico que debemos mostrar es el puerto por el que queremos acceder a nuestra aplicación, dejando que docker orqueste las conecciones entre nuestros containers.
+De esta manera lo unico que debemos mostrar es el puerto por el que queremos acceder a nuestra aplicación, dejando que docker orqueste las conexiones entre nuestros containers.
 
 _docker-compose.yml_
 
@@ -218,12 +238,12 @@ _docker-compose.yml_
 
 * docker-compose: database link
 
-Para crear la conexión entre los containers podemos, como hicimos manualmente publicar el puerto de la base de datos.
+Para crear la conexión entre los containers al igual que manualmente publicamos el puerto de la base de datos.
 
   ports:
     - "27017:27017"
 
-O lo que corresponde, que es dejar que docker haga el link entre VOLT y Mongo, para esto debemos modificar la configuración de VOLT linkeando con el nuevo nombre.
+Y dejamos que docker haga el link entre VOLT y Mongo, para esto debemos modificar la configuración de VOLT linkeando con el nuevo nombre.
 
 .code volt/compose.rb
 
@@ -231,20 +251,12 @@ O lo que corresponde, que es dejar que docker haga el link entre VOLT y Mongo, p
 
   # docker-compose up
 
-* 2
+.image images/docker-compose.jpeg
 
-Linea de comando:
+.image images/volt-running-with-compose.png
 
-  # docker build -t myname/tag .
+* docker-machine
 
-* Docker images
+Miren la hora y preguntense
 
-Utilizando images obtenemos un listado de todas nuestros contenedores (no necesariamente corriendo en nuestro sistema). Si alguno de estos containers nos molesta o queremos desacernos de él lo podemos remover con rmi o rmi -f y a continuación su ID.
-
-.image images/docker-images.png 166 937
-
-Estas imagenes estan listas para correr.
-
-* Docker Run
-
-  docker run --name ruby-postgres -e POSTGRES_PASSWORD=asdasd123 -d postgres
+** ¿Seguimos con docker-machine?
