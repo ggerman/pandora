@@ -111,8 +111,14 @@ Pero como programador también veo muchos beneficios que a veces no son tan pare
   Buscar una imagen:
   # docker search mongo
 
-
 .image images/mongodb.png
+
+* ... Profundizar en esto ...
+
+  Como almacenar registros en docker mongoDB "-v"
+
+.image images/adding-data-to-mongo.png
+
   
 * Creando un container - run / build
 
