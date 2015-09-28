@@ -14,9 +14,67 @@ http://www.altoros.com
 manuel.garcia@altoros.com
 @mgarcia
 
+* Drivers: (1)
+
+- amazonec2
+- azure
+- digitalocean
+- driverfactory
+- exoscale
+- fakedriver (¿?)
+- generic
+- google
+- hyperv
+
+* Drivers: (2)
+
+- none (¿?)
+- openstack
+- rackspace
+- softlayer
+- virtualbox <- Ejemplo
+- vmwarefusion
+- vmwarevcloudair
+- vmwarevsphere 
+
 * Docker machine:
+
+Docker machine nos permite crear contenedores, correrlos localmente y en la nube.
+  
+  Haciendo uso de los drivers de dm podemos crear multiples hosts para docker.
+  Una vez que configuramos el entorno, podemos usarlo con nuestro cliente de docker.
+
+.image images/docker-machine.png
+
+** Ahorrando trabajo:
+
+  .bashrc
+    alias dm = docker-machine
+
+* Docker machine - Create:
+ 
+.image images/dm-create.png
+
+Configurando el entorno para el nuevo host (rubylit):
+
+.image images/dm-env.png
 
 * Hosts:
 
-* Drivers:
+  Construyendo los containers en el host (rubylit)
 
+  # docker build -t voltframework:link .
+
+.image images/dm-running-volt.png
+
+* Volt en el host de rubylit corriendo con Docker Machine
+
+.image images/dm-volt.png
+
+* Environment
+
+.image images/dm-environments.png
+
+* Gracias
+
+.play gracias.go
