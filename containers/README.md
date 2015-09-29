@@ -104,3 +104,6 @@ Detached (-d) [RUNNING in background]
 * Docker hub
   - push 
   - pull
+
+
+![Agradecimentos](https://github.com/ggerman/pandora/blob/master/containers/thanks.png)
