@@ -5,7 +5,7 @@ volt:
   links:
     - mongo
 mongo:
+  volumes:
+    - /home/myuser/docker/volt/db:/data/db
   image: mongo
-  ports:
-    - "27017:27017"
 
