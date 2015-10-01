@@ -9,10 +9,10 @@ ggerman@gmail.com
 @gsgerman
 
 Manuel Garcia
-Manu definite acá, Altoros
-http://www.altoros.com
+Director Altoros Argentina
+www.altoros.com
 manuel.garcia@altoros.com
-@mgarcia
+@rmgarciap
 
 
 * Links - Acerca de la presentación:
@@ -260,6 +260,16 @@ Y dejamos que docker haga el link entre VOLT y Mongo, para esto debemos modifica
 .image images/docker-compose.jpeg
 
 .image images/volt-running-with-compose.png
+
+* Vagrant
+
+De www.vagrantup.com: "Create and configure lightweight, reproducible, and portable development environments"
+
+.image images/docker-vagrant-diffs.png
+
+* Vagrant (VMs) versus Docker
+
+.image images/vm-diagram.png
 
 * docker-machine
 
