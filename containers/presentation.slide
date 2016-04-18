@@ -1,13 +1,14 @@
 Containers: docker
-Balbuceos sobre una tecnología de moda.
+
+Contenidos adaptados para la FliSol 2016
+
+Build, Ship, Run
+An open platform for distributed applications for developers and sysadmins
 
 * Links
 
 .link https://www.docker.com/ Docker | https://www.docker.com/
-.link https://www.vagrantup.com/ Vagrant | https://www.vagrantup.com/
-.link https://www.chef.io/chef/ chef | https://www.chef.io/chef/
-.link https://puppetlabs.com/ puppets | https://puppetlabs.com/
-.link http://www.javiergarzas.com/2015/08/docker-vs-puppet-vs-vagrant-vs-chef.html docker vs puppet vs vagrant vs chef
+.image images/docker-footer.png 403 1000
 
 * Licencias
 
