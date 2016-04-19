@@ -33,8 +33,7 @@ RUN go get code.google.com/p/go.talks/present
 RUN go get golang.org/x/tools/cmd/present
 RUN cd $WORKDIR/src/golang.org/x/tools/cmd/present && ln -s $WORKDIR/src/golang.org/x/tools/cmd/present/static/ js
 
-RUN git clone https://github.com/ggerman/pandora.git
-WORKDIR /containers/pandora/containers/
+COPY . $WORKDIR
 
 ENTRYPOINT ["present", "-http", "0.0.0.0:3999", "-play", "false"]
 

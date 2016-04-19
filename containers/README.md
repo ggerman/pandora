@@ -1,5 +1,12 @@
 # containers
 
+Volt and Mongodb [Presentation example]
+
+```
+# docker pull ggerman/voltframework-docker
+https://hub.docker.com/r/ggerman/voltframework-docker/~/dockerfile/
+```
+
 ## 02 Sep 2015 update Dockerfile for new docker version:
 
 ```
@@ -97,3 +104,6 @@ Detached (-d) [RUNNING in background]
 * Docker hub
   - push 
   - pull
+
+
+![Agradecimentos](https://github.com/ggerman/pandora/blob/master/containers/thanks.png)
