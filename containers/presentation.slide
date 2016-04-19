@@ -1,61 +1,64 @@
-Containers: docker
+Introducción a docker.
 
-Contenidos adaptados para la FliSol 2016
 
-Build, Ship, Run
-An open platform for distributed applications for developers and sysadmins
+Build, Ship, Run any app.
+
+Una plataforma abierta de distribución de aplicaciones para desarrolladores y administradores.
+
+
+(Contenidos adaptados para la FliSol 2016)
+18 Apr 2016
+
+* Rápidamente: ¿Que es Docker?.
+
+Docker es una herramienta que puede _empaquetar_una_aplicación_y_sus_dependencias_en_un_contenedor_virtual_que_se_puede_ejecutar_en_cualquier_servidor_Linux_.
+
+Esto permite flexibilidad y portabilidad en la aplicación que se puede ejecutar, ya sea en las instalaciones físicas, la nube pública, nube privada, etc.
+
+.image images/ping.png 167 988
+.image images/container.png 174 697
 
 * Links
 
-.link https://www.docker.com/ Docker | https://www.docker.com/
+.link https://www.docker.com/ Docker (https://www.docker.com/)
+.link https://github.com/docker Código fuente (https://github.com/docker)
+.link https://github.com/ggerman/pandora/tree/master/containers Esta presentación (https://github.com/ggerman/pandora/tree/master/containers)
 .image images/docker-footer.png 403 1000
 
 * Licencias
 
-En su mayoria tenemos opciones de elegir soluciones libres en esta teconología. Aunque como todo corre en un servidor terminaremos pagando para que nuestros containers corran en un infrestructura que es complicado saber sus licencias.
+.link https://www.apache.org/licenses/ Apache License - Version 2.0, January 2004
+
+Versión 2.0
+La ASF adoptó la licencia Apache v2.0 en enero de 2004. Entre los objetivos declarados de la licencia se incluyen: hacer más fácil para proyectos que no son ASF que la utilicen, la mejora de la compatibilidad con software basado en GPL, permitiendo que la licencia sea incluida por referencia en lugar de la lista de cada archivo (o todos los archivos), aclarando la licencia en cuanto a sus contribuciones, y que requiere una licencia de patente sobre las contribuciones que necesariamente infrinjan patentes propias de un contribuyente. (fuente: wikipedia)
 
 .image images/inspeccionar.jpg 323 800
 
-* Licencias
+* Que no incluye la charla
 
-.image images/docker.png 48 199 
-Apache License | Version 2.0, January 2004 | https://www.apache.org/licenses/ [FREE]
+- Detalles del funcionamiento del Kernel Linux.
 
-.image images/vagrant.png 64 248
-The MIT License [FREE]
+- Detalles del funcionamiento del Demonio Docker.
 
-.image images/virtualbox.png 68 358
-GNU General Public License V2 [FREE]
+- Detalles avanzados de configuración de sistemas.
 
-* Licencias
+- Herramientas adicionales a Docker (docker-machine, swarm, etc...)
 
-.image images/puppet.png 53 157
-.link https://puppetlabs.com/sites/default/files/Puppet%20Labs%20-%20FORM%20-%20Software%20License%20Agreement%20%28Puppet%20Enterprise%20-%20Clickwrap%29%203.7.14.pdf  Licencia | Privativa
+.image images/no.png 369 395
 
-.image images/chef.png 196 233
-Apache License | Version 2.0, January 2004 | esta medio escondido pero esta así que [FREE]
+* Acerca de la charla (Introducción a Docker)
 
-.link https://github.com/chef/chef chef | source code
+- Escribir un Dockerfile básico.
 
-* boot2docker
+- Construir una imagen.
 
-_es_un_linuxito_ que sirve para correr containers Docker dentro de plataformas no Linux y también corre en Linux.
+- Poner a correr un container.
 
-.link http://boot2docker.io/ http://boot2docker.io/
+- Enlace entre containers. (aplicación y báse de datos)
 
-Es un desarrollo libre que nos permite correr la infraestructura de containers dentro de plataformas Windows / MacOs / Linux.
+- Correr múltiples containers configurados usando docker-compose
 
-.image images/isolation.png 103 704
-
-* Acerca de la charla
-
-- Principalmente Docker
-
-- ¿Porque vagrant?
-
-- ¿Porque Chef?
-
-- ¿Porque Puppet?
+.image images/yes.png 288 1000
 
 * Docker ¿Que es docker?
 
@@ -249,3 +252,14 @@ Estas imagenes estan listas para correr.
 * Docker Run
 
   docker run --name ruby-postgres -e POSTGRES_PASSWORD=asdasd123 -d postgres
+
+* boot2docker
+
+_es_un_linuxito_ que sirve para correr containers Docker dentro de plataformas no Linux y también corre en Linux.
+
+.link http://boot2docker.io/ http://boot2docker.io/
+
+Es un desarrollo libre que nos permite correr la infraestructura de containers dentro de plataformas Windows / MacOs / Linux.
+
+.image images/isolation.png 103 704
+
