@@ -1,7 +1,7 @@
 Introducción a docker.
 
-
 Build, Ship, Run any app.
+
 Una plataforma abierta de distribución de aplicaciones para desarrolladores y administradores.
 
 (Contenidos adaptados para la FliSol 2016)
@@ -59,35 +59,32 @@ La ASF adoptó la licencia Apache v2.0 en enero de 2004. Entre los objetivos dec
 
 Docker nos permite empaquetar una aplicación con todas sus dependencias en un contenedor.
 
-.image images/what_is_layered_filesystems_sm.png 190 200
+.image images/what_is_layered_filesystems_sm.png 285 300
 
-Los contenedores Docker son un sistema de archivos completo donde podemos colocar nuestras aplicaciones con todas sus librerías. Aqui podemos instalar todo lo que necesitamos en un servidor y esto nos garantiza que estaremos ejecutando el mismo código con las mismas librerías, independientemente del entorno.
+  Los contenedores Docker son un sistema de archivos completo donde podemos colocar nuestras 
+  aplicaciones con todas sus librerías. Aqui podemos instalar todo lo que necesitamos 
+  en un servidor y esto nos garantiza que estaremos ejecutando el mismo código con las 
+  mismas librerías, independientemente del entorno.
 
-* Docker - Isolation
+* Instalando Docker (DEBIAN)
 
-.link https://docs.docker.com/articles/dockerfile_best-practices/ Dockerfile best practices
+1. Update the APT package index.
 
-"La buena práctica" - existe la idea de que en cada container, por cuestiones de seguridad y menor promiscuidad, debe estar corriendo sólo una proceso y no más que eso. A esto se le llama aislamiento y es algo que es muy valorado dentro de las comunidades de creadores de containers.
+  $ sudo apt-get update
 
-.image images/aislamiento-social.jpg
+2. Install Docker.
 
-NOTA: es algo que esta bueno saberlo, pero a la hora de SHIP (enviar la aplicacion a un amigo que no es experto) no es tan útil, ya que es mas sencillo hacer sólo un container con todo adentro y listo.
+  $ sudo apt-get install docker-engine
 
-* Docker - Usando
+3. Start the docker daemon.  
 
-En las charlas de Docker que he visto, hay una fuerte tendencia a crear una infrastructura, con fines de empresa (seguridad, escalabilidad, etc ...)
+  $ sudo service docker start
 
-Pero como programador también veo muchos beneficios que a veces no son tan parecidos a un deber ser de infraestructura empresarial. Y esto es, que en tiempo de desarrollo, meter toda una aplicación con sus dependencias en un solo container (app, database, etc...), es algo que puede ser útil y hacernos ganar tiempo.
+4. Verify docker is installed correctly.
 
-  En este caso dejaríamos las buenas prácticas para el deploy 
-  y nuestro equipo sólo deberia conocer el comando.
-  # docker import app.tar.gz
+  $ sudo docker run hello-world
 
-.image images/157594438.jpg
-
-* Creando un container - Instalación
-
- Instalar docker
+* Instalando Docker
 
 .link https://docs.docker.com/installation/debian/ install | https://docs.docker.com/installation/debian/
 
@@ -95,18 +92,11 @@ Pero como programador también veo muchos beneficios que a veces no son tan pare
 
 * Creando un container - search
   
-  Buscar una imagen:
+  Buscar una imagen (https://hub.docker.com/): 
   # docker search mongo
 
 .image images/mongodb.png
 
-* ... Profundizar en esto ...
-
-  Como almacenar registros en docker mongoDB "-v"
-
-.image images/adding-data-to-mongo.png
-
-  
 * Creando un container - run / build
 
   En este caso run y build funcionan de la misma manera
@@ -115,7 +105,7 @@ Cuando corremos (run) o creamos una imagen (build) docker primero busca si no se
 
   Descarga los layers que le faltan para completar nuestra imagen.
 
-.image images/busybox-pull.png  
+.image images/busybox-pull.png 223 948 
 
 * Creando un container - run / build -> ps -a
 
@@ -133,6 +123,22 @@ Cuando corremos (run) o creamos una imagen (build) docker primero busca si no se
   # docker rmi -f 865a6d4ec0ed 
 
 .image images/docker-img.png 
+
+
+* Tips:
+
+Montar un volumen con archivos externos al container:
+
+  docker run --name mongo-name -v /mi/directorio/local:/data/db -d mongo:tag
+
+Ejecutar la linea de comandos en un container:
+
+  docker run -i -t image-name /bin/bash
+
+Exportar puertos de un contenedor (y que corra como demonio):
+
+  docker run -d -p 3999:3999 presentation
+
 
 * Creando un container - hagamos correr volt con mongodb (1)
 
@@ -280,13 +286,11 @@ Miren la hora y pregúntense
 
   docker run --name ruby-postgres -e POSTGRES_PASSWORD=asdasd123 -d postgres
 
-* boot2docker
+* Docker - Temas Pendientes
 
-_es_un_linuxito_ que sirve para correr containers Docker dentro de plataformas no Linux y también corre en Linux.
+  (si llegamos se mencionarán)
 
-.link http://boot2docker.io/ http://boot2docker.io/
+- Principio de Isolation
 
-Es un desarrollo libre que nos permite correr la infraestructura de containers dentro de plataformas Windows / MacOs / Linux.
-
-.image images/isolation.png 103 704
+- boot2docker
 
