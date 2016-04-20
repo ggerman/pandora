@@ -1,50 +1,8 @@
-<<<<<<< HEAD
 Introducción a docker.
 
 
 Build, Ship, Run any app.
-=======
-Containers: docker
-Balbuceos sobre una tecnología de moda.
-Tags: Docker, Docker Machine, Volt, MongoDB
-
-Giménez Silva Germán Alberto
-Programador para EosWeb
-http://www.eosweb.info
-ggerman@gmail.com
-@gsgerman
-
-Manuel Garcia
-Director Altoros Argentina
-www.altoros.com
-manuel.garcia@altoros.com
-@rmgarciap
-
-
-* Links - Acerca de la presentación:
-
-.link https://www.docker.com/ Docker | https://www.docker.com/ 
-.link https://www.vagrantup.com/ Vagrant | https://www.vagrantup.com/
-
-  No se si entra:
-
-.link https://docs.docker.com/machine/ Docker Machine | https://docs.docker.com/machine/
-
-  Puede ser de interés pero NO entra en la presentación:
-
-.link https://docs.docker.com/swarm/install-w-machine/ Swarm 
-.link https://giantswarm.io/ Giant Swarm | https://giantswarm.io/
-.link https://www.chef.io/chef/ chef | https://www.chef.io/chef/
-.link https://puppetlabs.com/ puppets | https://puppetlabs.com/
-.link http://www.javiergarzas.com/2015/08/docker-vs-puppet-vs-vagrant-vs-chef.html docker vs puppet vs vagrant vs chef
->>>>>>> ac0ff323695397e5806b09e1a63c7c8a90080a5a
-
 Una plataforma abierta de distribución de aplicaciones para desarrolladores y administradores.
-
-<<<<<<< HEAD
-=======
-La mayoría de las opciones para elegir en esta tecnología tienen licencias libres. Aunque, como todo corre en un servidor, terminaremos pagando para que nuestros containers corran en un infrestructura que es complicado conocer sus licencias. En general, serán gnu-linux por economía.
->>>>>>> ac0ff323695397e5806b09e1a63c7c8a90080a5a
 
 (Contenidos adaptados para la FliSol 2016)
 18 Apr 2016
@@ -65,7 +23,6 @@ Esto permite flexibilidad y portabilidad en la aplicación que se puede ejecutar
 .link https://github.com/ggerman/pandora/tree/master/containers Esta presentación (https://github.com/ggerman/pandora/tree/master/containers)
 .image images/docker-footer.png 403 1000
 
-<<<<<<< HEAD
 * Licencias
 
 .link https://www.apache.org/licenses/ Apache License - Version 2.0, January 2004
@@ -76,23 +33,16 @@ La ASF adoptó la licencia Apache v2.0 en enero de 2004. Entre los objetivos dec
 .image images/inspeccionar.jpg 323 800
 
 * Que no incluye la charla
-=======
-* boot2docker
->>>>>>> ac0ff323695397e5806b09e1a63c7c8a90080a5a
 
 - Detalles del funcionamiento del Kernel Linux.
-
 - Detalles del funcionamiento del Demonio Docker.
-
 - Detalles avanzados de configuración de sistemas.
-
 - Herramientas adicionales a Docker (docker-machine, swarm, etc...)
 
 .image images/no.png 369 395
 
 * Acerca de la charla (Introducción a Docker)
 
-<<<<<<< HEAD
 - Escribir un Dockerfile básico.
 
 - Construir una imagen.
@@ -104,14 +54,6 @@ La ASF adoptó la licencia Apache v2.0 en enero de 2004. Entre los objetivos dec
 - Correr múltiples containers configurados usando docker-compose
 
 .image images/yes.png 288 1000
-=======
-- 1. Principalmente Docker
-
-- 1.1 Algunos conceptos
-- 1.2 Creando un proyecto en docker
-
-- 2. Comparativa con vagrant
->>>>>>> ac0ff323695397e5806b09e1a63c7c8a90080a5a
 
 * Docker ¿Qué es docker?
 
@@ -336,7 +278,6 @@ Miren la hora y pregúntense
 
 .image images/bye.jpg
 
-<<<<<<< HEAD
   docker run --name ruby-postgres -e POSTGRES_PASSWORD=asdasd123 -d postgres
 
 * boot2docker
@@ -349,5 +290,3 @@ Es un desarrollo libre que nos permite correr la infraestructura de containers d
 
 .image images/isolation.png 103 704
 
-=======
->>>>>>> ac0ff323695397e5806b09e1a63c7c8a90080a5a
