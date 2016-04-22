@@ -1,11 +1,23 @@
 Introducción a docker.
-
 Build, Ship, Run any app.
 
 Una plataforma abierta de distribución de aplicaciones para desarrolladores y administradores.
 
+  Giménez Silva Germán Alberto
+  Programador para EosWeb
+  http://www.eosweb.info
+  ggerman@gmail.com
+  @gsgerman
+
+  Manuel Garcia
+  Director Altoros Argentina
+  http://www.altoros.com
+  manuel.garcia@altoros.com
+  @mgarcia
+
 (Contenidos adaptados para la FliSol 2016)
-18 Apr 2016
+
+
 
 * Rápidamente: ¿Que es Docker?.
 
@@ -84,13 +96,36 @@ Docker nos permite empaquetar una aplicación con todas sus dependencias en un c
 
   $ sudo docker run hello-world
 
+* docker run hello-world
+
+.image images/docker-run-hello-world.png
+
 * Instalando Docker
 
 .link https://docs.docker.com/installation/debian/ install | https://docs.docker.com/installation/debian/
 
 .image images/non-root.png
 
-* Creando un container - search
+* Intro:
+
+  Para tener un container necesitamos de:
+  - Descargar o crear una imagen
+
+¿Que es una imagen?
+
+Una imagen para Docker es el espacio de disco que contiene el conjunto de aplicaciones que necesitamos para poner en marcha nuestro container:
+
+- GNU/Linux Distribución
+- Librerias o Servicios que necesita nuestra aplicación.
+
+  Nota: Todo esto se define en un archivo llamado Dockerfile y se crea la imagen ejecutando 
+  # docker build -t image-name .
+
+El container es la ejecución de esa imagen (o la imagen corriendo)
+
+  # docker run -i -t image-name
+
+* Buscar una imagen - search
   
   Buscar una imagen (https://hub.docker.com/): 
   # docker search mongo
@@ -107,7 +142,26 @@ Cuando corremos (run) o creamos una imagen (build) docker primero busca si no se
 
 .image images/busybox-pull.png 223 948 
 
-* Creando un container - run / build -> ps -a
+* Tips:
+
+Poner en marcha un container:
+
+  docker run -i -t image-name
+
+Montar un volumen con archivos externos al container:
+
+  docker run --name mongo-name -v /mi/directorio/local:/data/db -d mongo:tag
+
+Ejecutar la linea de comandos en un container:
+
+  docker run -i -t image-name /bin/bash
+
+Exportar puertos de un contenedor (y que corra como demonio):
+
+  docker run -d -p 3999:3999 presentation
+
+
+* Administrar containers: ps -a
 
   Conocer los containers que estan corriendo en nuestro host.
   # docker ps -a
@@ -123,22 +177,6 @@ Cuando corremos (run) o creamos una imagen (build) docker primero busca si no se
   # docker rmi -f 865a6d4ec0ed 
 
 .image images/docker-img.png 
-
-
-* Tips:
-
-Montar un volumen con archivos externos al container:
-
-  docker run --name mongo-name -v /mi/directorio/local:/data/db -d mongo:tag
-
-Ejecutar la linea de comandos en un container:
-
-  docker run -i -t image-name /bin/bash
-
-Exportar puertos de un contenedor (y que corra como demonio):
-
-  docker run -d -p 3999:3999 presentation
-
 
 * Creando un container - hagamos correr volt con mongodb (1)
 
@@ -170,6 +208,8 @@ El parámetro -d hace correr la instancia RUN como demonio.
 * Creando un container - RUN (2)
 
 .image images/volt-welcome-page.png
+
+.image images/hostname.png
 
 * Volt: conectando a la base de datos.
 
@@ -264,12 +304,6 @@ De www.vagrantup.com: "Create and configure lightweight, reproducible, and porta
 
 .image images/vm-diagram.png
 
-* docker-machine
-
-Miren la hora y pregúntense
-
-** ¿Seguimos con docker-machine?
-
 * Preguntas 
 
 .image images/preguntas.png
@@ -279,18 +313,10 @@ Miren la hora y pregúntense
 
 - Redacción /  Ortografía: María Jimena Franco
 - Iniciativa: Manuel Garcia
-- Logística: Manuel Garcia, Altoros, EosWeb
 - Aguante: a los Presentes
 
 .image images/bye.jpg
 
   docker run --name ruby-postgres -e POSTGRES_PASSWORD=asdasd123 -d postgres
 
-* Docker - Temas Pendientes
-
-  (si llegamos se mencionarán)
-
-- Principio de Isolation
-
-- boot2docker
 
