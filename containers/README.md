@@ -1,5 +1,7 @@
 # containers
 
+![Flisol 2016 - Questions] (./images/CgnKOanWgAEbvtg.jpg)
+
 Volt and Mongodb [Presentation example]
 
 ```
