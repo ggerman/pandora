@@ -1,7 +1,5 @@
 # containers
 
-![Flisol 2016 - Questions] (./images/CgnKOanWgAEbvtg.jpg)
-
 Volt and Mongodb [Presentation example]
 
 ```
@@ -109,3 +107,7 @@ Detached (-d) [RUNNING in background]
 
 
 ![Agradecimentos](https://github.com/ggerman/pandora/blob/master/containers/thanks.png)
+
+* Flisol 2016 preguntas:
+
+![Flisol 2016 - Questions] (./images/CgnKOanWgAEbvtg.jpg)
